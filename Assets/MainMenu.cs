@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame ()
     {
         SceneManager.LoadScene("SampleScene");
+        SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);
     }
 
     public void QuitGame()

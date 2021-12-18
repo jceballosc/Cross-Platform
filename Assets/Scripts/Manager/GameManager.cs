@@ -5,13 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-   
+
+    // C# property to retrieve save/load manager
+    public static LoadSaveManager SaveManager
+    {
+        get
+        {
+            if (!saveManager)
+                saveManager = Instance.GetComponent<LoadSaveManager>();
+
+            return saveManager;
+        }
+    }
+
+    private static LoadSaveManager saveManager = null;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+   // {
     
-    }
+    //}
 
     // Update is called once per frame
     void Update()
@@ -24,6 +37,18 @@ public class GameManager : Singleton<GameManager>
                 SceneManager.LoadScene("SampleScene");
 
         }
+    }
+
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 1;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void Quit()
